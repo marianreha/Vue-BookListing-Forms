@@ -3,7 +3,7 @@
     <h1>{{title}}</h1>
     <input type="text" placeholder="Search Books" v-model="searchInput">
     <ul>
-      <book-item v-for='book in searchedBooks' :key='book.id' :book='book'></book-item>
+      <book-item v-for='book in books' :key='book.id' :book='book'></book-item>
     </ul>
     <hr><h2>Filtered Books By Ownership</h2>
     <select v-model="holding"><option v-for="filter in filters">{{ filter }}</option></select>
@@ -51,7 +51,6 @@ export default {
       const searchFilter = book => {
         return book.title.toLowerCase().match(this.searchInput.toLowerCase());
       };
-      return _.filter(this.books, searchFilter)
     }
   },
   methods: {
